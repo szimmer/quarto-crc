@@ -5,7 +5,7 @@ This is a Quarto book.
 
 ## Software conventions {.unnumbered}
 
-```{python}
+```{r}
 1 + 1
 ```
 

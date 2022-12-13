@@ -1,10 +1,20 @@
 {
-  "hash": "362a9dda474bbb107bf9206dbede047c",
+  "hash": "a16d708ab06459f95325de29a7a32a72",
   "result": {
-    "markdown": "# Introduction\n\nThis is a book created from markdown\\index{markdown} and executable code.\n\nHere's a basic plot:\n\n::: {.cell execution_count=1}\n``` {.python .cell-code}\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n```\n\n::: {.cell-output .cell-output-display}\n![A line plot on a polar axis.](intro_files/figure-pdf/fig-polar-output-1.pdf){#fig-polar fig-pos='H'}\n:::\n:::\n\n\nSee @knuth84 for additional discussion of literate programming\\index{literate programming}.\n\n",
+    "markdown": "# Introduction\n\nThis is a book created from markdown\\index{markdown} and executable code.\n\nHere's a basic plot:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(ggplot2)\n\npie <- ggplot(mtcars, aes(x = factor(1), fill = factor(cyl))) +\n geom_bar(width = 1)\npie + coord_polar(theta = \"y\")\n```\n\n::: {.cell-output-display}\n![A pie chart using polar coordinates.](intro_files/figure-pdf/fig-polar-1.pdf){#fig-polar fig-pos='H'}\n:::\n:::\n\n\n\nSee @knuth84 for additional discussion of literate programming\\index{literate programming}.\n",
     "supporting": [
-      "intro_files"
+      "intro_files\\figure-pdf"
     ],
-    "filters": []
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {
+      "knitr": [
+        "{\"type\":\"list\",\"attributes\":{},\"value\":[]}"
+      ]
+    },
+    "preserve": null,
+    "postProcess": false
   }
 }

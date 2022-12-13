@@ -140,8 +140,9 @@
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage[bf,singlelinecheck=off]{caption}
+\captionsetup[table]{labelsep=space}
+\captionsetup[figure]{labelsep=space}
 \usepackage[scale=.8]{sourcecodepro}
-\usepackage{hyperref}
 
 \usepackage{framed,color}
 \definecolor{shadecolor}{RGB}{248,248,248}
@@ -152,6 +153,7 @@
 \renewcommand{\floatpagefraction}{0.75}
 
 \renewenvironment{quote}{\begin{VF}}{\end{VF}}
+\usepackage{hyperref}
 \let\oldhref\href
 \renewcommand{\href}[2]{#2\footnote{\url{#1}}}
 
@@ -261,7 +263,7 @@
 
 \title{Quarto CRC Book}
 \author{Jane Doe and Max Power}
-\date{11/22/22}
+\date{11/22/2022}
 
 \begin{document}
 \maketitle
@@ -273,14 +275,16 @@
 \thispagestyle{empty}
 
 \begin{center}
-To blah, blah, and blah.
+To my son,
+
+without whom I should have finished this book two years earlier
 %\includegraphics{images/dedication.pdf}
 \end{center}
 
 \setlength{\abovedisplayskip}{-5pt}
 \setlength{\abovedisplayshortskip}{-5pt}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, interior hidden, borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, frame hidden, enhanced, breakable]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, interior hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, breakable, frame hidden, sharp corners]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -294,24 +298,20 @@ To blah, blah, and blah.
 \chapter*{Preface}\label{preface}}
 \addcontentsline{toc}{chapter}{Preface}
 
-\markboth{Preface}{Preface}
-
 This is a Quarto book.
 
 \hypertarget{software-conventions}{%
 \section*{Software conventions}\label{software-conventions}}
 \addcontentsline{toc}{section}{Software conventions}
 
-\markright{Software conventions}
-
 \begin{Shaded}
 \begin{Highlighting}[]
-\DecValTok{1} \OperatorTok{+} \DecValTok{1}
+\DecValTok{1} \SpecialCharTok{+} \DecValTok{1}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-2
+[1] 2
 \end{verbatim}
 
 To learn more about Quarto books visit
@@ -320,8 +320,6 @@ To learn more about Quarto books visit
 \hypertarget{acknowledgments}{%
 \section*{Acknowledgments}\label{acknowledgments}}
 \addcontentsline{toc}{section}{Acknowledgments}
-
-\markright{Acknowledgments}
 
 Blah, blah, blah\ldots{}
 
@@ -339,28 +337,21 @@ Here's a basic plot:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
-\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\FunctionTok{library}\NormalTok{(ggplot2)}
 
-\NormalTok{r }\OperatorTok{=}\NormalTok{ np.arange(}\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{, }\FloatTok{0.01}\NormalTok{)}
-\NormalTok{theta }\OperatorTok{=} \DecValTok{2} \OperatorTok{*}\NormalTok{ np.pi }\OperatorTok{*}\NormalTok{ r}
-\NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(}
-\NormalTok{  subplot\_kw }\OperatorTok{=}\NormalTok{ \{}\StringTok{\textquotesingle{}projection\textquotesingle{}}\NormalTok{: }\StringTok{\textquotesingle{}polar\textquotesingle{}}\NormalTok{\} }
-\NormalTok{)}
-\NormalTok{ax.plot(theta, r)}
-\NormalTok{ax.set\_rticks([}\FloatTok{0.5}\NormalTok{, }\DecValTok{1}\NormalTok{, }\FloatTok{1.5}\NormalTok{, }\DecValTok{2}\NormalTok{])}
-\NormalTok{ax.grid(}\VariableTok{True}\NormalTok{)}
-\NormalTok{plt.show()}
+\NormalTok{pie }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(mtcars, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{factor}\NormalTok{(}\DecValTok{1}\NormalTok{), }\AttributeTok{fill =} \FunctionTok{factor}\NormalTok{(cyl))) }\SpecialCharTok{+}
+ \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{width =} \DecValTok{1}\NormalTok{)}
+\NormalTok{pie }\SpecialCharTok{+} \FunctionTok{coord\_polar}\NormalTok{(}\AttributeTok{theta =} \StringTok{"y"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{figure}[H]
 
-{\centering \includegraphics{./intro_files/figure-pdf/fig-polar-output-1.pdf}
+{\centering \includegraphics{./intro_files/figure-pdf/fig-polar-1.pdf}
 
 }
 
-\caption{\label{fig-polar}A line plot on a polar axis.}
+\caption{\label{fig-polar}A pie chart using polar coordinates.}
 
 \end{figure}
 
@@ -379,8 +370,6 @@ In summary, this book has no content whatsoever.
 \hypertarget{references}{%
 \chapter*{References}\label{references}}
 \addcontentsline{toc}{chapter}{References}
-
-\markboth{References}{References}
 
 \hypertarget{refs}{}
 \begin{CSLReferences}{1}{0}
